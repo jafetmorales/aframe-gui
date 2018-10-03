@@ -2059,6 +2059,18 @@ AFRAME.registerComponent('gui-interactable', {
         var data = this.data;
         var el = this.el;
 
+        // this.keyHandler = function(event) {
+        //     if (event.keyCode == data.keyCode) {
+        //         console.log("key press by gui-interactable : " + data.keyCode);
+        //         el.emit('click');
+        //     }
+        //     event.preventDefault();
+        // }
+        // if (data.keyCode) {
+        //     window.addEventListener("keydown", this.keyHandler, true);
+        // }
+
+
         if (data.keyCode) {
             window.addEventListener("keydown", function (event) {
                 if (event.keyCode == data.keyCode) {
@@ -2066,16 +2078,18 @@ AFRAME.registerComponent('gui-interactable', {
                     el.emit('click');
                 }
                 event.preventDefault();
-            }, true);
+            }, false);
         }
     },
     update: function update() {},
     tick: function tick() {},
     remove: function remove() {
         console.log("AM REMOVED BRO");
+        // window.removeEventListener("keydown", this.keyHandler, true);
     },
     pause: function pause() {
         console.log("AM PAUSING BRO");
+        // window.removeEventListener("keydown", this.keyHandler, true);
     },
     play: function play() {
         console.log("AM PLAYING BRO");
