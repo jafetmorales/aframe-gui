@@ -2059,40 +2059,21 @@ AFRAME.registerComponent('gui-interactable', {
         var data = this.data;
         var el = this.el;
 
-        this.keyHandler = function (event) {
-            if (event.keyCode == data.keyCode) {
-                console.log("key press by gui-interactable : " + data.keyCode);
-                el.emit('click');
-            }
-            // event.preventDefault();
-        };
         if (data.keyCode) {
-            window.addEventListener("keydown", this.keyHandler, true);
+            window.addEventListener("keydown", function (event) {
+                if (event.keyCode == data.keyCode) {
+                    console.log("key press by gui-interactable : " + data.keyCode);
+                    el.emit('click');
+                }
+                // event.preventDefault();
+            }, true);
         }
-
-        // if(data.keyCode){
-        //     window.addEventListener("keydown", function (event) {
-        //         if(event.keyCode == data.keyCode){                  
-        //             console.log("key press by gui-interactable : " + data.keyCode);
-        //             el.emit('click');
-        //         }
-        //         event.preventDefault();
-        //     }, true);
-        // }
     },
     update: function update() {},
     tick: function tick() {},
-    remove: function remove() {
-        console.log("AM REMOVED BRO");
-        // window.removeEventListener("keydown", this.keyHandler, true);
-    },
-    pause: function pause() {
-        console.log("AM PAUSING BRO");
-        // window.removeEventListener("keydown", this.keyHandler, true);
-    },
-    play: function play() {
-        console.log("AM PLAYING BRO");
-    },
+    remove: function remove() {},
+    pause: function pause() {},
+    play: function play() {},
     setClickAction: function setClickAction(action) {
         this.data.clickAction = action; //change function dynamically
     }
