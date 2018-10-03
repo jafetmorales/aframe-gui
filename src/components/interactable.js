@@ -24,11 +24,14 @@ AFRAME.registerComponent('gui-interactable', {
     tick: function () {
     },
     remove: function () {
+        console.log("AM REMOVED BRO")
+
     },
     pause: function () {
         console.log("AM PAUSING BRO")
     },
     play: function () {
+        console.log("AM PLAYING BRO")
     },
     setClickAction: function (action) {
         this.data.clickAction = action; //change function dynamically

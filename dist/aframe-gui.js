@@ -2071,9 +2071,15 @@ AFRAME.registerComponent('gui-interactable', {
     },
     update: function update() {},
     tick: function tick() {},
-    remove: function remove() {},
-    pause: function pause() {},
-    play: function play() {},
+    remove: function remove() {
+        console.log("AM REMOVED BRO");
+    },
+    pause: function pause() {
+        console.log("AM PAUSING BRO");
+    },
+    play: function play() {
+        console.log("AM PLAYING BRO");
+    },
     setClickAction: function setClickAction(action) {
         this.data.clickAction = action; //change function dynamically
     }
