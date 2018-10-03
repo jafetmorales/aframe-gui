@@ -2059,27 +2059,26 @@ AFRAME.registerComponent('gui-interactable', {
         var data = this.data;
         var el = this.el;
 
-        // this.keyHandler = function(event) {
-        //     if (event.keyCode == data.keyCode) {
-        //         console.log("key press by gui-interactable : " + data.keyCode);
-        //         el.emit('click');
-        //     }
-        //     event.preventDefault();
-        // }
-        // if (data.keyCode) {
-        //     window.addEventListener("keydown", this.keyHandler, true);
-        // }
-
-
+        this.keyHandler = function (event) {
+            if (event.keyCode == data.keyCode) {
+                console.log("key press by gui-interactable : " + data.keyCode);
+                el.emit('click');
+            }
+            // event.preventDefault();
+        };
         if (data.keyCode) {
-            window.addEventListener("keydown", function (event) {
-                if (event.keyCode == data.keyCode) {
-                    console.log("key press by gui-interactable : " + data.keyCode);
-                    el.emit('click');
-                }
-                event.preventDefault();
-            }, false);
+            window.addEventListener("keydown", this.keyHandler, true);
         }
+
+        // if(data.keyCode){
+        //     window.addEventListener("keydown", function (event) {
+        //         if(event.keyCode == data.keyCode){                  
+        //             console.log("key press by gui-interactable : " + data.keyCode);
+        //             el.emit('click');
+        //         }
+        //         event.preventDefault();
+        //     }, true);
+        // }
     },
     update: function update() {},
     tick: function tick() {},
