@@ -26,6 +26,7 @@ AFRAME.registerComponent('gui-interactable', {
     remove: function () {
     },
     pause: function () {
+        console.log("AM PAUSING BRO")
     },
     play: function () {
     },
