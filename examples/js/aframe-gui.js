@@ -2065,7 +2065,7 @@ AFRAME.registerComponent('gui-interactable', {
                     console.log("key press by gui-interactable : " + data.keyCode);
                     el.emit('click');
                 }
-                event.preventDefault();
+                // event.preventDefault();
             }, true);
         }
     },
