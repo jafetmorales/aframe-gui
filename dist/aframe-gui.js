@@ -222,6 +222,7 @@ AFRAME.registerComponent('gui-button', {
         buttonContainer.setAttribute('material', 'shader: flat; opacity: 1; side:double; color: ' + data.borderColor);
         buttonContainer.setAttribute('rotation', '0 0 0');
         buttonContainer.setAttribute('position', '0 0 0.01');
+        buttonContainer.setAttribute('tensor-container', 'aframe-gui');
         el.appendChild(buttonContainer);
 
         var buttonEntity = document.createElement("a-entity");
@@ -229,6 +230,7 @@ AFRAME.registerComponent('gui-button', {
         buttonEntity.setAttribute('material', 'shader: flat; opacity: 1; side:double; color: ' + data.backgroundColor);
         buttonEntity.setAttribute('rotation', '0 0 0');
         buttonEntity.setAttribute('position', '0 0 0.02');
+        buttonEntity.setAttribute('tensor-container', 'aframe-gui');
         el.appendChild(buttonEntity);
         this.buttonEntity = buttonEntity;
 
@@ -244,6 +246,7 @@ AFRAME.registerComponent('gui-button', {
         textEntity.setAttribute('geometry', 'primitive: plane; width: ' + guiItem.width / 1.05 + '; height: ' + guiItem.height / 1.05 + ';');
         textEntity.setAttribute('material', 'shader: flat; src: #' + canvas.id + '; transparent: true; opacity: 1; side:front;');
         textEntity.setAttribute('position', '0 0 0.041');
+        textEntity.setAttribute('tensor-container', 'aframe-gui');
         el.appendChild(textEntity);
 
         ////WAI ARIA Support
@@ -295,11 +298,18 @@ AFRAME.registerComponent('gui-button', {
     }
 });
 
+AFRAME.registerComponent('tensor-container', {
+    schema: { default: 'aframe-gui' },
+    init: function init() {},
+    remove: function remove() {}
+});
+
 AFRAME.registerPrimitive('a-gui-button', {
     defaultComponents: {
         'gui-interactable': {},
         'gui-item': { type: 'button' },
-        'gui-button': {}
+        'gui-button': {},
+        'tensor-container': 'aframe-gui'
     },
     mappings: {
         'onclick': 'gui-interactable.clickAction',
