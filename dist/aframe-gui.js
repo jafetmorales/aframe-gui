@@ -223,6 +223,7 @@ AFRAME.registerComponent('gui-button', {
         buttonContainer.setAttribute('rotation', '0 0 0');
         buttonContainer.setAttribute('position', '0 0 0.01');
         buttonContainer.setAttribute('tensor-container', 'aframe-gui');
+        buttonContainer.setAttribute('tensor-instantiate', true);
         el.appendChild(buttonContainer);
 
         var buttonEntity = document.createElement("a-entity");
@@ -231,6 +232,7 @@ AFRAME.registerComponent('gui-button', {
         buttonEntity.setAttribute('rotation', '0 0 0');
         buttonEntity.setAttribute('position', '0 0 0.02');
         buttonEntity.setAttribute('tensor-container', 'aframe-gui');
+        buttonEntity.setAttribute('tensor-instantiate', true);
         el.appendChild(buttonEntity);
         this.buttonEntity = buttonEntity;
 
@@ -247,6 +249,7 @@ AFRAME.registerComponent('gui-button', {
         textEntity.setAttribute('material', 'shader: flat; src: #' + canvas.id + '; transparent: true; opacity: 1; side:front;');
         textEntity.setAttribute('position', '0 0 0.041');
         textEntity.setAttribute('tensor-container', 'aframe-gui');
+        textEntity.setAttribute('tensor-instantiate', true);
         el.appendChild(textEntity);
 
         ////WAI ARIA Support
@@ -303,13 +306,19 @@ AFRAME.registerComponent('tensor-container', {
     init: function init() {},
     remove: function remove() {}
 });
+AFRAME.registerComponent('tensor-instantiate', {
+    schema: { default: true },
+    init: function init() {},
+    remove: function remove() {}
+});
 
 AFRAME.registerPrimitive('a-gui-button', {
     defaultComponents: {
         'gui-interactable': {},
         'gui-item': { type: 'button' },
         'gui-button': {},
-        'tensor-container': 'aframe-gui'
+        'tensor-container': 'aframe-gui',
+        'tensor-instantiate': true
     },
     mappings: {
         'onclick': 'gui-interactable.clickAction',
